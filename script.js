@@ -1,54 +1,101 @@
-// Wait for DOM and all resources to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // First make sure all images are loaded
-            var images = document.querySelectorAll('img');
-            var totalImages = images.length;
-            var imagesLoaded = 0;
-            
-            if(totalImages === 0) {
-                // If no images, just wait a bit for other resources
-                setTimeout(markAsLoaded, 500);
-            } else {
-                // Check each image
-                images.forEach(function(img) {
-                    if(img.complete) {
-                        imageLoaded();
-                    } else {
-                        img.addEventListener('load', imageLoaded);
-                        img.addEventListener('error', imageLoaded); // even if error occurs
-                    }
-                });
-            }
-            
-            function imageLoaded() {
-                imagesLoaded++;
-                if(imagesLoaded === totalImages) {
-                    markAsLoaded();
-                }
-            }
-        });
+    // Track loading progress
+        let resourcesLoaded = 0;
+        let totalResources = 0;
+        const progressBar = document.getElementById('loader-progress');
         
-        // Also check when window loads as fallback
-        window.addEventListener('load', function() {
-            // If not already marked as loaded
-            if(!document.body.classList.contains('content-loaded')) {
-                markAsLoaded();
-            }
-        });
-        
-        function markAsLoaded() {
-            document.body.classList.add('content-loaded');
+        // Function to update progress bar
+        function updateProgress() {
+            const progress = (resourcesLoaded / totalResources) * 100;
+            progressBar.style.width = `${progress}%`;
             
-            // Remove preloader from DOM after fade out
-            setTimeout(function() {
-                var preloader = document.getElementById('preloader');
-                if(preloader) {
-                    preloader.style.display = 'none';
-                }
-            }, 500);
+            if (progress >= 100) {
+                setTimeout(() => {
+                    document.body.classList.add('loaded');
+                    document.getElementById('preloader').style.opacity = '0';
+                    setTimeout(() => {
+                        document.getElementById('preloader').style.display = 'none';
+                        document.getElementById('main-content').style.display = 'block';
+                    }, 500);
+                }, 300);
+            }
         }
-
-        /*------------------------------*/
+        
+        // Check all page resources
+        function checkResources() {
+            // Get all resources that need to load
+            const images = document.querySelectorAll('img');
+            const iframes = document.querySelectorAll('iframe');
+            const videos = document.querySelectorAll('video');
+            const audios = document.querySelectorAll('audio');
+            const scripts = document.querySelectorAll('script[src]');
+            const links = document.querySelectorAll('link[rel="stylesheet"]');
+            
+            totalResources = images.length + iframes.length + videos.length + 
+                          audios.length + scripts.length + links.length + 1; // +1 for DOMContentLoaded
+            
+            // If no resources, just wait for DOM
+            if (totalResources === 1) {
+                resourcesLoaded = 1;
+                updateProgress();
+                return;
+            }
+            
+            // Check DOM ready first
+            document.addEventListener('DOMContentLoaded', () => {
+                resourcesLoaded++;
+                updateProgress();
+            });
+            
+            // Check images
+            images.forEach(img => {
+                if (img.complete) {
+                    resourcesLoaded++;
+                    updateProgress();
+                } else {
+                    img.addEventListener('load', () => {
+                        resourcesLoaded++;
+                        updateProgress();
+                    });
+                    img.addEventListener('error', () => {
+                        resourcesLoaded++;
+                        updateProgress();
+                    });
+                }
+            });
+            
+            // Check other resources
+            const elements = [...iframes, ...videos, ...audios, ...scripts, ...links];
+            elements.forEach(el => {
+                if (el.readyState === 'complete' || el.readyState === 'loaded') {
+                    resourcesLoaded++;
+                    updateProgress();
+                } else {
+                    el.addEventListener('load', () => {
+                        resourcesLoaded++;
+                        updateProgress();
+                    });
+                    el.addEventListener('error', () => {
+                        resourcesLoaded++;
+                        updateProgress();
+                    });
+                }
+            });
+        }
+        
+        // Start checking resources
+        checkResources();
+        
+        // Fallback - if something goes wrong, show page after 5 seconds max
+        setTimeout(() => {
+            if (!document.body.classList.contains('loaded')) {
+                document.body.classList.add('loaded');
+                document.getElementById('preloader').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('preloader').style.display = 'none';
+                    document.getElementById('main-content').style.display = 'block';
+                }, 500);
+            }
+        }, 5000);
 
 
 
