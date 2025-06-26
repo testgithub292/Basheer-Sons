@@ -1,55 +1,65 @@
-     // Wait for DOM and all resources to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // First make sure all images are loaded
-            var images = document.querySelectorAll('img');
-            var totalImages = images.length;
-            var imagesLoaded = 0;
-            
-            if(totalImages === 0) {
-                // If no images, just wait a bit for other resources
-                setTimeout(markAsLoaded, 500);
-            } else {
-                // Check each image
-                images.forEach(function(img) {
-                    if(img.complete) {
-                        imageLoaded();
-                    } else {
-                        img.addEventListener('load', imageLoaded);
-                        img.addEventListener('error', imageLoaded); // even if error occurs
-                    }
-                });
-            }
-            
-            function imageLoaded() {
-                imagesLoaded++;
-                if(imagesLoaded === totalImages) {
-                    markAsLoaded();
-                }
-            }
-        });
-        
-        // Also check when window loads as fallback
-        window.addEventListener('load', function() {
-            // If not already marked as loaded
-            if(!document.body.classList.contains('content-loaded')) {
-                markAsLoaded();
-            }
-        });
-        
-        function markAsLoaded() {
-            document.body.classList.add('content-loaded');
-            
-            // Remove preloader from DOM after fade out
-            setTimeout(function() {
-                var preloader = document.getElementById('preloader');
-                if(preloader) {
-                    preloader.style.display = 'none';
-                }
-            }, 5000);
-        }
+// document.addEventListener('DOMContentLoaded', function () {
+//     var images = document.querySelectorAll('img');
+//     var totalImages = images.length;
+//     var imagesLoaded = 0;
+//     var maxWait = 9000; // 5 seconds
+//     var preloadCleared = false;
 
+//     if (totalImages === 0) {
+//         setTimeout(markAsLoaded, 500); // No images, wait briefly
+//     } else {
+//         images.forEach(function (img) {
+//             if (img.complete) {
+//                 imageLoaded();
+//             } else {
+//                 img.addEventListener('load', imageLoaded);
+//                 img.addEventListener('error', imageLoaded);
+//             }
+//         });
+//     }
 
+//     // Safety: Remove preloader after 5 seconds no matter what
+//     setTimeout(function () {
+//         if (!preloadCleared) {
+//             markAsLoaded();
+//         }
+//     }, maxWait);
 
+//     function imageLoaded() {
+//         imagesLoaded++;
+//         if (imagesLoaded === totalImages && !preloadCleared) {
+//             markAsLoaded();
+//         }
+//     }
+// });
+
+// window.addEventListener('load', function () {
+//     if (!document.body.classList.contains('content-loaded')) {
+//         markAsLoaded();
+//     }
+// });
+
+// function markAsLoaded() {
+//     if (document.body.classList.contains('content-loaded')) return;
+
+//     document.body.classList.add('content-loaded');
+//     var preloader = document.getElementById('preloader');
+
+//     setTimeout(function () {
+//         if (preloader) {
+//             preloader.style.display = 'none';
+//         }
+//     }, 1000); // Small fade-out delay
+// }
+
+        // Remove preloader after 5 seconds
+        setTimeout(function () {
+            document.body.classList.add('loaded');
+            var preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.display = 'none';
+            }
+        }, 5000);
 
 // Mobile Menu Toggle
 const hamburger = document.querySelector('.hamburger');
