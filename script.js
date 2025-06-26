@@ -52,14 +52,27 @@
 //     }, 1000); // Small fade-out delay
 // }
 
-        // Remove preloader after 5 seconds
+ // Check if user already visited in this session
+    if (!sessionStorage.getItem('hasVisited')) {
+        // Show preloader for 5 seconds
         setTimeout(function () {
             document.body.classList.add('loaded');
             var preloader = document.getElementById('preloader');
             if (preloader) {
                 preloader.style.display = 'none';
             }
+
+            // Mark that user has visited in this session
+            sessionStorage.setItem('hasVisited', 'true');
         }, 5000);
+    } else {
+        // Already visited, skip loading screen
+        document.body.classList.add('loaded');
+        var preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.style.display = 'none';
+        }
+    }
 
 // Mobile Menu Toggle
 const hamburger = document.querySelector('.hamburger');
