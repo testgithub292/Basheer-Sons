@@ -1,3 +1,58 @@
+// Wait for DOM and all resources to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // First make sure all images are loaded
+            var images = document.querySelectorAll('img');
+            var totalImages = images.length;
+            var imagesLoaded = 0;
+            
+            if(totalImages === 0) {
+                // If no images, just wait a bit for other resources
+                setTimeout(markAsLoaded, 500);
+            } else {
+                // Check each image
+                images.forEach(function(img) {
+                    if(img.complete) {
+                        imageLoaded();
+                    } else {
+                        img.addEventListener('load', imageLoaded);
+                        img.addEventListener('error', imageLoaded); // even if error occurs
+                    }
+                });
+            }
+            
+            function imageLoaded() {
+                imagesLoaded++;
+                if(imagesLoaded === totalImages) {
+                    markAsLoaded();
+                }
+            }
+        });
+        
+        // Also check when window loads as fallback
+        window.addEventListener('load', function() {
+            // If not already marked as loaded
+            if(!document.body.classList.contains('content-loaded')) {
+                markAsLoaded();
+            }
+        });
+        
+        function markAsLoaded() {
+            document.body.classList.add('content-loaded');
+            
+            // Remove preloader from DOM after fade out
+            setTimeout(function() {
+                var preloader = document.getElementById('preloader');
+                if(preloader) {
+                    preloader.style.display = 'none';
+                }
+            }, 500);
+        }
+
+        /*------------------------------*/
+
+
+
+
 // Mobile Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
