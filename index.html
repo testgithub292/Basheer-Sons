@@ -1,89 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basheer Sons</title>
-      <!-- Font Awesome -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- Header -->
-<header>
-    <div class="container">
-        <nav class="navbar">
-            <a href="index.html" class="logo">
-                <i class="fas fa-shopping-bag logo-icon"></i>
-                Basheer<span>Sons</span>
-            </a>
-            
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <!-- <li><a href="Shop.html">About Us</a></li> -->
-                <li class="dropdown">
-                    <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Our Story</a></li>
-                        <li><a href="#">Our Mission</a></li>
-                        <li><a href="#">Our Team</a></li>
-                        <!-- <li><a href="#">Stickers</a></li>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-shopping-bag logo-icon"></i>
+                    Basheer<span>Sons</span>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <!-- <li><a href="Shop.html">About Us</a></li> -->
+                    <li class="dropdown">
+                        <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Our Story</a></li>
+                            <li><a href="#">Our Mission</a></li>
+                            <li><a href="#">Our Team</a></li>
+                            <!-- <li><a href="#">Stickers</a></li>
                         <li><a href="#"></a></li>
                         <li><a href="#">Stickers</a></li> -->
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Products <i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Tags</a></li>
-                        <li><a href="#">Labels</a></li>
-                        <li><a href="#">Washing Labels</a></li>
-                        <!-- <li><a href="#">Stickers</a></li> -->
-                        <li><a href="#">Stickers</a></li>
-                        <li><a href="#">Custom Orders</a></li>
-                    </ul>
-                </li>
-                <!-- <li><a href="About.html">Services</a></li> -->
-                 <li class="dropdown">
-                    <a href="#"> Services<i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Design Support</a></li>
-                        <li><a href="#">Delivery & Logistics</a></li>
-                    </ul>
-                </li>
-                <!-- <li><a href="blog.html">Blog</a></li> -->
-                <!-- <li><a href="Contact.html">Contact Us</a></li> -->
-                 <li class="dropdown">
-                    <a href="#"> Contact Us<i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Get a Quote</a></li>
-                        <li><a href="#">Request a Sample</a></li>
-                        <li><a href="#">Location & Hours</a></li>
-                    </ul>
-                </li>
-            </ul>
-            
-            <div class="icons">
-                <div class="search-icon">
-                    <i class="fas fa-search"></i>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Products <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Labels</a></li>
+                            <li><a href="#">Washing Labels</a></li>
+                            <!-- <li><a href="#">Stickers</a></li> -->
+                            <li><a href="#">Stickers</a></li>
+                            <li><a href="#">Custom Orders</a></li>
+                        </ul>
+                    </li>
+                    <!-- <li><a href="About.html">Services</a></li> -->
+                    <li class="dropdown">
+                        <a href="#"> Services<i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Design Support</a></li>
+                            <li><a href="#">Delivery & Logistics</a></li>
+                        </ul>
+                    </li>
+                    <!-- <li><a href="blog.html">Blog</a></li> -->
+                    <!-- <li><a href="Contact.html">Contact Us</a></li> -->
+                    <li class="dropdown">
+                        <a href="#"> Contact Us<i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Get a Quote</a></li>
+                            <li><a href="#">Request a Sample</a></li>
+                            <li><a href="#">Location & Hours</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="icons">
+                    <div class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="cart-icon" style="position: relative;">
+                        <i class="fas fa-comment-dots"></i>
+                        <!-- <span class="cart-count">3</span> -->
+                    </div>
                 </div>
-                <div class="cart-icon" style="position: relative;">
-                    <i class="fas fa-comment-dots"></i>
-                    <!-- <span class="cart-count">3</span> -->
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Slider Container -->
+        <div class="slider-container">
+            <div class="slider-track">
+                <!-- Slide 1 -->
+                <div class="slide slide-1 active">
+                    <div class="slide-bg"></div>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h1 class="slide-title">AUTOMATION</h1>
+                            <p class="slide-subtitle">Advanced automation solutions for modern printing presses.
+                                Increase efficiency and reduce costs.</p>
+
+                            <div class="slide-features">
+                                <div class="feature">
+                                    <i class="fas fa-robot feature-icon"></i>
+                                    <span class="feature-text">Smart Automation</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-tachometer-alt feature-icon"></i>
+                                    <span class="feature-text">High Speed</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-cogs feature-icon"></i>
+                                    <span class="feature-text">Precision Engineering</span>
+                                </div>
+                            </div>
+
+                            <div class="slide-buttons">
+                                <a href="#" class="slide-btn btn-primary">REAL MV</a>
+                                <a href="#" class="slide-btn btn-secondary">HORE MV</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="slide slide-2">
+                    <div class="slide-bg"></div>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h1 class="slide-title">VACUUM FILTERS</h1>
+                            <p class="slide-subtitle">Premium vacuum filter solutions for clean and efficient printing
+                                operations.</p>
+
+                            <div class="slide-features">
+                                <div class="feature">
+                                    <i class="fas fa-filter feature-icon"></i>
+                                    <span class="feature-text">High Filtration</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-wind feature-icon"></i>
+                                    <span class="feature-text">Airflow Optimized</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-recycle feature-icon"></i>
+                                    <span class="feature-text">Eco-Friendly</span>
+                                </div>
+                            </div>
+
+                            <div class="slide-buttons">
+                                <a href="#" class="slide-btn btn-primary">VIEW PRODUCTS</a>
+                                <a href="#" class="slide-btn btn-secondary">LEARN MORE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="slide slide-3">
+                    <div class="slide-bg"></div>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h1 class="slide-title">INNOVATION</h1>
+                            <p class="slide-subtitle">Cutting-edge technology for the future of printing. Quality you
+                                can trust.</p>
+
+                            <div class="slide-features">
+                                <div class="feature">
+                                    <i class="fas fa-lightbulb feature-icon"></i>
+                                    <span class="feature-text">Smart Solutions</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-chart-line feature-icon"></i>
+                                    <span class="feature-text">Performance</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-award feature-icon"></i>
+                                    <span class="feature-text">Award Winning</span>
+                                </div>
+                            </div>
+
+                            <div class="slide-buttons">
+                                <a href="#" class="slide-btn btn-primary">OUR WORK</a>
+                                <a href="#" class="slide-btn btn-secondary">CONTACT US</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
+
+            <!-- Arrow Navigation -->
+            <div class="slider-arrow arrow-left">
+                <i class="fas fa-chevron-left"></i>
             </div>
-        </nav>
-    </div>
-</header>
+            <div class="slider-arrow arrow-right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+
+            <!-- Dot Navigation -->
+            <div class="slider-nav">
+                <div class="slider-dot active" data-slide="0"></div>
+                <div class="slider-dot" data-slide="1"></div>
+                <div class="slider-dot" data-slide="2"></div>
+            </div>
+        </div>
+
+    </main>
+    
 
 
     <!-- AOS Animation -->
@@ -91,4 +214,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
