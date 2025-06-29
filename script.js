@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 autoSlideInterval = setInterval(() => {
                     const newIndex = (currentIndex + 1) % slides.length;
                     goToSlide(newIndex);
-                }, 5000);
+                }, 10000);
             }
             
             // Initialize first slide and start auto slide
